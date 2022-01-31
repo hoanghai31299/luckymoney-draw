@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luckdy Draw - Hoang Hai</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+
+    <script src="./Winwheel.min.js" defer></script>
+    <script src="./index.js" defer></script>
+</head>
+<style>
+    h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    .wrapper {
+        height: 100vh;
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('./job516-namcha-09.jpg');
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .button.spin {
+        margin-top: 50px;
+        border: 1px white solid;
+        font-weight: bold;
+    }
+
+    .canvas-wrapper {
+        position: relative;
+    }
+
+    .pointer {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        transform: translate(100%, -50%);
+        font-size: 40px;
+        color: black;
+    }
+
+    .prize-noti {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 400px;
+        text-align: center;
+        max-width: 100vw;
+        height: 600px;
+        background-color: #ebee9d;
+        border: 2px #ff1010 solid;
+        border-radius: 10px;
+        max-height: 100vh;
+        padding: 20px;
+    }
+    .mes {
+        font-size: 1.5rem;
+    }
+
+    .prize {
+        color: red;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <h1>Năm mới zui zẻ hơn lăm cũ :></h1>
+        <div class="canvas-wrapper">
+            <canvas id="luckydraw" width="500" height="500"> </canvas>
+            <span class="pointer">👈👈🏽</span>
+        </div>
+        <button class="button is-danger is-outlined is-rounded spin">QUAY 🌠</button>
+        <div class="prize-noti">
+            <img src="./giphy.gif" alt="happi new year" />
+            <p class="mes">Chúc mừng, bạn đã chúng </br><span class="prize">20.000</span></p>
+        </div>
+    </div>
+</body>
+
+</html>
