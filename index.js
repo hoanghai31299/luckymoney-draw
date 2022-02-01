@@ -63,6 +63,10 @@ const prizes = [
   },
 ];
 
+const getRandomSpin = () => Math.floor(8 + Math.random() * 10);
+
+const getRandomDuration = () => Math.floor(8 + Math.random() * 5);
+
 const createWeel = () => {
   return new Winwheel({
     canvasId: 'luckydraw',
@@ -74,8 +78,8 @@ const createWeel = () => {
     animation: {
       easing: 'Power4.out',
       type: 'spinToStop', // Type of animation.
-      duration: 5, // How long the animation is to take in seconds.
-      spins: 6, // The number of complete 360 degree rotations the wheel is to do.
+      duration: getRandomDuration(), // How long the animation is to take in seconds.
+      spins: getRandomSpin(), // The number of complete 360 degree rotations the wheel is to do.
       callbackFinished: 'winAnimation()',
       callbackSound: playSound, // Specify function to call when sound is to be triggered.
       soundTrigger: 'pin',
@@ -103,6 +107,9 @@ const resetWheel = () => {
     colourWheel.segments[x].fillStyle = prizes[x - 1].fillStyle;
   }
   colourWheel.rotationAngle = 0;
+  colourWheel.animation.duration = getRandomDuration();
+  colourWheel.animation.spins = getRandomSpin();
+
   colourWheel.draw();
 };
 
