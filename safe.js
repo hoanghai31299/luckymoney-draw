@@ -36,29 +36,29 @@ const playSound = () => {
 const prizes = [
   {
     fillStyle: '#F15156',
-    text: '20.000 VND',
+    text: '10.000 VND',
     size: winwheelPercentToDegrees(40),
   },
   {
     fillStyle: '#C97064',
-    text: '60.000 VND',
+    text: '30.000 VND',
     size: winwheelPercentToDegrees(10),
   },
 
   {
     fillStyle: '#B5446E',
-    text: '50.000 VND',
+    text: '25.000 VND',
     size: winwheelPercentToDegrees(15),
   },
 
   {
     fillStyle: '#FFC07F',
-    text: '10.000 VND',
+    text: '5.000 VND',
     size: winwheelPercentToDegrees(30),
   },
   {
     fillStyle: '#BA324F',
-    text: '100.000 VND',
+    text: '50.000 VND',
     size: winwheelPercentToDegrees(5),
   },
 ];
