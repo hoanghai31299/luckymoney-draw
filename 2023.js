@@ -43,13 +43,13 @@ const money = {
 };
 const prizes = [
   {
-    fillStyle: "#FFEA20",
+    fillStyle: "#8DCBE6",
     text: "10.000 VND",
     size: winwheelPercentToDegrees(40),
   },
 
   {
-    fillStyle: "#8DCBE6",
+    fillStyle: "#FFEA20",
     text: "5.000 VND",
     size: winwheelPercentToDegrees(20),
   },
@@ -223,4 +223,10 @@ const btnCloseHistory = document.querySelector(".button.close-history");
 btnCloseHistory.addEventListener("click", () => {
   const historyContainer = document.querySelector(".history");
   historyContainer.classList.remove("open");
+});
+
+const btnDeleteHistory = document.querySelector(".button.clear-history");
+btnDeleteHistory.addEventListener("click", () => {
+  localStorage.removeItem("spinHistory");
+  renderHistory();
 });
