@@ -25,13 +25,21 @@
 
 <body>
     <div class="wrapper">
-        <h1>Năm mới vui vẻ hơn năm cũ</h1>
+        <h1>Lì xì may mắn</h1>
         <div class="canvas-wrapper">
             <canvas id="luckydraw" width="500" height="500"> </canvas>
             <span class="pointer">👈👈🏽</span>
         </div>
+        <div class="spin-action">
+            <button class="button is-outlined is-rounded spin">
+                <span class="spin-text">QUAY 🌠</span>
+                <span class="goodluck-text">
+                    GOOD LUCK 😉
+                </span>
+            </button>
 
-        <button class="button is-outlined is-rounded spin">QUAY 🌠</button>
+        </div>
+
         <img class="prize-value" src="./images/money/10k.png" />
         <div class="blur-bg"></div>
         <div class="prize-noti">
@@ -78,6 +86,11 @@
                 </div>
                 <div class="setting-prizes">
                 </div>
+                <p class="help">
+                    <b>*Cột 1:</b> giá trị phần thưởng
+                    <br /><b>*Cột 2:</b> tỉ lệ % trúng phần thưởng (trên 100%)
+                    <br /><b>*Cột 3:</b> màu của ô phần thưởng
+                </p>
                 <p class="help">Có thể xoá bớt phần thường bằng cách set tỉ lệ = 0</p>
             </div>
 </body>

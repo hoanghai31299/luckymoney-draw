@@ -1,6 +1,7 @@
 import Setting from "./setting.js";
 const audio = new Audio("./tick.mp3");
 //animation;
+let isSpinning = false;
 const timeline = gsap.timeline();
 const winTimeline = gsap.timeline({ paused: true });
 const winAnimate = winTimeline
@@ -10,7 +11,7 @@ const winAnimate = winTimeline
       scale: 1,
       opacity: 1,
       ease: "back",
-      duration: 1,
+      duration: 0.7,
     },
     "start"
   )
@@ -18,7 +19,7 @@ const winAnimate = winTimeline
     visibility: "visible",
     opacity: 1,
     ease: "back",
-    duration: 0.5,
+    duration: 0.2,
   })
   .to(
     ".prize-value",
@@ -56,21 +57,47 @@ timeline
     },
     "createCanvas"
   )
-  .from("button.spin", {
+  .from(".button.spin", {
     duration: 1,
     y: 20,
     scale: 1.2,
-    ease: "bounce",
     opacity: 0,
+    ease: "bounce",
   });
 
-const pointer = document.querySelector(".pointer");
-const pointerAnimation = gsap.to(pointer, {
-  scale: 1.3,
-  duration: 0.5,
-  rotate: 360,
-  paused: true,
-});
+const spinTimeline = gsap.timeline({ paused: true });
+const spinAnimate = spinTimeline
+  .fromTo(
+    ".spin-text",
+    { y: 0, visibility: "visible", opacity: 1 },
+    {
+      y: -20,
+      visibility: "hidden",
+      opacity: 0,
+      ease: "back",
+      duration: 0.3,
+    },
+    "start"
+  )
+  .fromTo(
+    ".goodluck-text",
+    { visibility: "hidden", opacity: 0, y: 20, duration: 0.5 },
+    {
+      y: 0,
+      visibility: "visible",
+      opacity: 1,
+      duration: 0.3,
+    }
+  )
+  .to(
+    ".pointer",
+    {
+      scale: 1.3,
+      duration: 0.5,
+      rotate: 360,
+    },
+    "<"
+  );
 
 const playSound = () => {
   audio.pause();
@@ -105,6 +132,15 @@ const getRandomSpin = () => Math.floor(8 + Math.random() * 10);
 
 const getRandomDuration = () => Math.floor(8 + Math.random() * 5);
 
+const clickAnywhere = (e) => {
+  if (e.target !== document.querySelector(".prize-noti")) {
+    winAnimate.reverse();
+    spinAnimate.reverse();
+    resetWheel();
+    isSpinning = false;
+    window.removeEventListener("click", clickAnywhere);
+  }
+};
 function winAnimation() {
   const winningSegmentNumber = colourWheel.getIndicatedSegmentNumber();
 
@@ -115,19 +151,12 @@ function winAnimation() {
 
   colourWheel.segments[winningSegmentNumber].fillStyle = "yellow";
   const moneyKey = winningPrize.text.replace(/\D/g, "");
-  console.log(moneyKey);
   colourWheel.draw();
   addToHistory(moneyKey);
   document.querySelector(".prize-value").src = money[moneyKey];
   document.querySelector(".prize").innerHTML = `${winningPrize?.text}`;
   winAnimate.play("start");
-  window.addEventListener("click", (e) => {
-    if (e.target !== document.querySelector(".prize-noti")) {
-      winAnimate.reverse();
-      pointerAnimation.reverse();
-      resetWheel();
-    }
-  });
+  window.addEventListener("click", clickAnywhere);
 }
 
 const createWeel = () => {
@@ -140,7 +169,6 @@ const createWeel = () => {
       size: winwheelPercentToDegrees(prize.rate),
     };
   });
-  console.log(prizes);
   return new Winwheel({
     canvasId: "luckydraw",
     numSegments: prizes.length,
@@ -189,8 +217,11 @@ const resetWheel = () => {
 
 const btn = document.querySelector(".button.spin");
 btn.addEventListener("click", () => {
-  pointerAnimation.play();
+  if (isSpinning) return;
+  spinAnimate.restart(true);
   colourWheel.startAnimation();
+  isSpinning = true;
+  window["colourWheel"] = colourWheel;
 });
 
 function addToHistory(prize) {

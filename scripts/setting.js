@@ -90,6 +90,7 @@ class Setting {
     const input = document.createElement("input");
     input.classList.add("input");
     input.type = "number";
+    input.placeholder = "Tỉ lệ";
     input.min = 1;
     input.max = 100;
     input.step = 5;

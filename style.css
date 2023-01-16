@@ -10,6 +10,10 @@ body {
   overflow: hidden; /* Hide scrollbars */
 }
 
+.button {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 300;
+}
 h1 {
   font-size: 1.5em;
   font-weight: bold;
@@ -32,13 +36,31 @@ h1 {
   overflow: hidden;
   scrollbar-width: none;
 }
-
-.button.spin {
-  margin-top: 50px;
-  border: 1px white solid;
-  font-weight: bold;
+.spin-action {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.spin-action .button {
+  position: relative;
+  border: 1px white solid;
+  height: 40px;
+  overflow: hidden;
+  font-weight: bold;
+  width: 150px;
+}
+.button.spin span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.button.spin span.goodluck-text {
+  visibility: hidden;
+  opacity: 0;
+}
 .canvas-wrapper {
   position: relative;
 }
@@ -209,4 +231,9 @@ h1 span {
     width: auto;
     max-height: calc(100% - 63px);
   }
+}
+
+.help {
+  color: #000000;
+  font-weight: 500;
 }
