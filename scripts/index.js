@@ -110,6 +110,7 @@ const money = {
   5000: "./images/money/5k.jpg",
   20000: "./images/money/20k.jpg",
   50000: "./images/money/50k.jpg",
+  40000: "./images/money/20k.jpg",
   30000: "./images/money/30k.png",
   100000: "./images/money/100k.jpg",
   200000: "./images/money/200k.jpg",

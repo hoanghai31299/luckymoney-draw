@@ -1,6 +1,6 @@
 "use strict";
 
-const valueArray = [5, 30, 10, 20, 50, 100, 200, 500];
+const valueArray = [5, 30, 10, 20, 40, 50, 100, 200, 500];
 const defaultPrizes = [
   {
     color: "#8DCBE6",
